@@ -1,4 +1,4 @@
-# Day 04 - Go Piscine
+# Day 04 - Go Intensive
 
 ## Candy!
 
