@@ -1,4 +1,4 @@
-# Day 04 - Go Intensive
+# Day 04 - Go Boot camp
 
 ## Candy!
 
