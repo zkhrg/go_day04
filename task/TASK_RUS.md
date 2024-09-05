@@ -1,8 +1,8 @@
 # Day 04 - Go Boot camp
 
-## Сладость!
+## Сладости!
 
-## Contents
+## Содержание
 
 1. [Глава I](#chapter-i) \
     1.1. [Основные правила](#general-rules)
@@ -46,34 +46,32 @@
 
 Вы налили мистеру Роджерсу стакан хорошего старого бурбона и начали задавать вопросы пытаясь получить побольше деталей.
 
-"Well, I don't know much. All our vending machines were selling the same set of candy, you know, here they are on the brochure" - he gives you the piece of colorful paper advertising five new amazing tastes:
-
-"Ну, я не знаю многого. Все наши вендинговые автоматы продавали один и тот же набор конфет, ты знаешь, вот они все на брошюре" - он дает вам кусочек цветастой бумаги рекламирующей пять новых невероятных вкусов:
+"Ну, я не знаю многого. Все наши вендинговые автоматы продавали один и тот же набор конфет, ты знаешь, вот они все на брошюре" - он дает вам кусочек цветастой бумаги рекламирующей пять новых невероятных вкусов: <br>
 __EN__
 <table>
   <tr>
     <th>Name</th>
-    <th>Price</th>
+    <th>Price (cent)</th>
   </tr>
   <tr>
     <td>Cool Eskimo</td>
-    <td>10 cents</td>
+    <td>10</td>
   </tr>
   <tr>
     <td>Apricot Aardvark</td>
-    <td>15 cents</td>
+    <td>15</td>
   </tr>
   <tr>
     <td>Natural Tiger</td>
-    <td>17 cents</td>
+    <td>17</td>
   </tr>
   <tr>
     <td>Dazzling 	Elderberry</td>
-    <td>21 cents</td>
+    <td>21</td>
   </tr>
   <tr>
     <td>Yellow Rambutan</td>
-    <td>23 cents</td>
+    <td>23</td>
   </tr>
 </table>
 
@@ -82,27 +80,27 @@ __RU__
 <table>
   <tr>
     <th>Название</th>
-    <th>Цена</th>
+    <th>Цена (цент)</th>
   </tr>
   <tr>
     <td>Крутое Эскимо</td>
-    <td>10 центов</td>
+    <td>10</td>
   </tr>
   <tr>
     <td>Абрикосовый трубкозуб</td>
-    <td>15 центов</td>
+    <td>15</td>
   </tr>
   <tr>
     <td>Натуральный тигр</td>
-    <td>17 центов</td>
+    <td>17</td>
   </tr>
   <tr>
     <td>Ослепительная бузина</td>
-    <td>21 цент</td>
+    <td>21</td>
   </tr>
   <tr>
     <td>Желтый рамбутан</td>
-    <td>23 цента</td>
+    <td>23</td>
   </tr>
 </table>
 
@@ -217,37 +215,39 @@ curl -XPOST -H "Content-Type: application/json" -d '{"money": 46, "candyType": "
 
 Ты откидываешься на спинку с улыбкой и чувством что видимо в этом случае все будет хорошо сделано. Мистер Роджерс тоже немного выдохнул. Но затем его лицо снова поменяло выражение.
 
-"I know we've already paid for increased security at our datacenter" - he said a bit thoughtfully. - "...but what if this criminal desides to perform some [Man-in-the-middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) trickery? My business will be destroyed again! People will lose their jobs abd I'll get bankrupt!"
+"Я знаю мы уже оплатили за увеличение безопасности нашего датацентра" - сказал он немного вдумчиво. "...но что если этот преступник решит совершить атаку [Man-in-the-middle(человек посредине)](https://ru.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BA%D0%B0_%D0%BF%D0%BE%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D0%BA%D0%B0)? Мой бизнес будет снова уничтожен! Люди потеряют свои работы и я стану банкротом!"
 
-"Я знаю мы уже оплатили за увеличение безопасности нашего датацентра" - сказал он немного вдумчиво. "...но что если этот преступник решит совершить атаку [Man-in-the-middle(человек посредине)](https://ru.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BA%D0%B0_%D0%BF%D0%BE%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D0%BA%D0%B0)? Мой бизнес будет снова уничтожен! Люди потеряют свои работы и  "
+"Полегче, милый друг" - вы говорите с ухмылкойю - "Я думаю у меня есть как раз то что нужно"
 
-"Easy there, good sir" - you say with a smirk. - "I think I've got just what you need here."
+Так, тебе нужно будет реализовать аутентификацию сертификата для сервера как и тестового клиента который сможет обращаться к апи используя само-подписанный сертификат и локальную авторскую безопасности "верифицируя" это на обе стороны.
 
-So, you need to implement a certificate authentication for the server as well as a test client which will be able to query your API using a self-signed certificate and a local security authority to "verify" it on both sides.
+Ты уже имеешь сервер с поддержкой TLS, но это возможно что ты будешь ре-генерировать код основываясь на дополнительном параметре, так что тут будут использоваться защищенные URLы.
 
-You already have a server which supports TLS, but it is possible that you'll have to re-generate the code specifying an additional parameter, so it will be using use secure URLs.
+Так же, тебе нужно будет локальный "сертификат авторства" для управления сертификатами. Для твоего задания [minica](https://github.com/jsha/minica) выглядит достаточно хорошим решением. Это ссылка на реально полезное видее в последней Главе, если ты хочешь знать больше деталей о том как Go работает с защищенными соединениями.
 
-Also, you'll need a local "certificate authority" to manage certificates. For our task [minica](https://github.com/jsha/minica) seems like a good enough solution. There is a link to a really helpful video in last Глава if you want to know more details about how Go works with secure connections.
+Так, потому что мы говорим о полноценной общей TLS аутентификации, тебе нужно генерировать две cert/key пары, одна для сервера, одна для клиента. Мника может также генерировать CA файл с названием `minica.pem` для тебя с тем что тебе нужно для подключения к твоему клиенту некоторым образов (твой авто-сгенерированный сервер будет уже поддерживать заданный CA файл нормально как и `key.pem` и `cert.pem` через параметры командной строки). Так генерирование сертификата может потребовать тебе использовать домен, вместо айпи адреса, так что в примерах ниже мы будем использовать домен "candy.ltd".
 
-So, because we're talking a full-blown mutual TLS authentication, you'll have to generate two cert/key pairs - one for the server and one for the client. Minica will also generate a CA file called `minica.pem` for you which you'll need to plug into your client somehow (your auto-generated server should already support specifying CA file as well as `key.pem` and `cert.pem` through command line parameters). Also, generating certificate may require you to use a domain instead of an IP address, so in examples below we will use "candy.tld".
+Держи в уме, потому что ты используешь кастомный локальный CA ты типа не сможешь слать запросы на свой апи используя curl, веббраузер или инструментики типа [постмана](https://www.postman.com/), без модификации.
 
-Keep in mind, that because you're using a custom local CA you likely won't be able to query your API using cURL, web browser or tool like [Postman](https://www.postman.com/) anymore without tuning.
+Твой тестовый клиент должен поддерживать флаги:
+* `'-k'` принимающие двухбуквенную абберевиаутру для типа конфеты
+* `'-c'` количество конфетов для покупочки
+* `'-m'` количество денег что было "передано в автомат"
+Так что ты "запрос на покупку" будет выглядеть так:
 
-Your test client should support flags '-k' (accepts two-letter abbreviation for the candy type), '-c' (count of candy to buy) and '-m' (amount of money you "gave to machine"). So, the "buying request" should look like this:
-
-```
-~$ ./candy-client -k AA -c 2 -m 50
+```sh
+./candy-client -k AA -c 2 -m 50
 Thank you! Your change is 20
 ```
 
 <h2 id="chapter-vi" >Глава VI</h2>
 <h3 id="ex02">Упражнение 02: Старая корова</h3>
 
-In a few days mister Rogers finally calls you with some great news - the thief was apprehended and immediately confessed! But candy businessman also had a small request.
+В течении нескольких дней мистер Роджерс наконец позвонил тебе с какими-то хорошими весями - вор был задержан и немеделенно признался! Но у конфетного бизнесмена есть еще одна небольшая просьба.
 
-"You seem like you really do know your way around machines, don't ya? There is one last thing I'd ask you to do, basically nothing. Our customers prefer something funny instead of just plain 'thank you', so my nephew Patrick wrote a program that generates some weird animal saying things. I think it's written in C, but that's not a problem for you, isn't it? Please don't change the code, Patrick is still improving it!"
+"Ты выглядишь как будто реально разбираешься в наших автоматах, не так ли? Это последня вещь которую я прошу, фактически ничто. Наши покупатели предопчитают что-то повеселее вместо обычного 'thank you', так мой племянник Патрик написал программу которая генерирует странное говорящее животное. Я думаю это было написано на си, но это же не проблема для тебя, не так ли? Пожужа не меняй код, Патрик все еще учится!" 
 
-Oh boy. You look through your emails and notice one from mister Rogers with a code attached to it:
+О пацан. Ты глянул в свои элетронные письма и заметил одно от мистера Роджерса, с кодом прикрепленном к нему:
 
 ```c
 #include <stdio.h>
@@ -304,23 +304,22 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-Looks like you'll have to return an ASCII-powered cow as a text in "thanks" field in response. When querying by cURL it will look like this:
+Выглядит так что тебе нужно возвращаться нарисованную ASCII символами корову как текст в поле "thanks" в ответе. Тогда запрос используя curl будет выглядеть так:
 
-```
-~$ curl -s --key cert/client/key.pem --cert cert/client/cert.pem --cacert cert/minica.pem -XPOST -H "Content-Type: application/json" -d '{"candyType": "NT", "candyCount": 2, "money": 34}' "https://candy.tld:3333/buy_candy"
+```sh
+curl -s --key cert/client/key.pem --cert cert/client/cert.pem --cacert cert/minica.pem -XPOST -H "Content-Type: application/json" -d '{"candyType": "NT", "candyCount": 2, "money": 34}' "https://candy.tld:3333/buy_candy"
 {"change":0,"thanks":" ____________\n< Thank you! >\n ------------\n        \\   ^__^\n         \\  (oo)\\_______\n            (__)\\       )\\/\\\n                ||----w |\n                ||     ||\n"}
-
 ```
 
-Apparently, all you need is to reuse this `ask_cow()` C function without rewriting it in your Go code.
+Ну типа все что тебе нужно это переиспользовать функцию `ask_cow()` из C, без переписования этого функционала на Go код.
 
-"Sometimes I think I have to drop this detective work and just go work as a Senior Engineer" - you grumble.
+"Иногда я подумываю бросить работу детективом и просто работать Senior Инжинером" - ты проворчал.
 
-At least you should probably have as much candy as you want in return. Like, for the rest of your life.
+По крайней мере ты можешь получить столько конфет сколько ты захочешь. Например, на всю оставшуюся жизнь.
 
 <h2 id="chapter-vii" >Глава VII</h2>
-<h3 id="reading">Reading</h3>
+<h3 id="reading">Список для прочтения</h3>
 
-[Using the spec](https://goswagger.io/tutorial/custom-server.html)
-[Secure connections](https://www.youtube.com/watch?v=kxKLYDLzuHA)
-[Original cowsay](https://en.wikipedia.org/wiki/Cowsay)
+* [Использование yaml спецификации](https://goswagger.io/tutorial/custom-server.html)<br>
+* [Защищенные соединения](https://www.youtube.com/watch?v=kxKLYDLzuHA)<br>
+* [Оригинальный коровий клич](https://en.wikipedia.org/wiki/Cowsay)
