@@ -1,6 +1,6 @@
 all: client 
 
-client: docker-req bin/client certs server remove-certs
+client: docker-req certs server remove-certs
 	go build -o bin/client client/main.go
 	@echo "пример для запуска ./bin/client -k AA -c 1 -m 50"
 
@@ -23,4 +23,8 @@ docker-req:
 
 remove-certs:
 	rm -rf generated-server/certs
+
+clean:
+	rm -rf certs 
+	rm bin/client
 	
