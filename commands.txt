@@ -1,5 +1,5 @@
 docker pull openapitools/openapi-generator-cli
-docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \                                                                                                      17:05:16
+docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
     -i /local/scheme.yaml \
     -g go-server \
     -o /local/generated-go-server
