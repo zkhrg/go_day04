@@ -8,6 +8,7 @@ server:
 	docker compose -f generated-server/docker-compose.yaml up --build -d
 
 certs:
+	export PATH=$PATH:/go/bin
 	rm -rf certs
 	go install github.com/jsha/minica@latest
 	mkdir certs
